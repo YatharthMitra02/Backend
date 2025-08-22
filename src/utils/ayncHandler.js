@@ -1,11 +1,11 @@
 //syntax 1
-const asynHandler = (requestHandler)=>(
-    (req,res,next) =>
+const asynHandler = (requestHandler)=>{
+   return  (req,res,next) =>
         Promise.
     resolve(requestHandler(req,res,next)).
     catch((err)=>next(err))
     
-)
+}
 export  {asynHandler}
 // syntax 2
 /*
