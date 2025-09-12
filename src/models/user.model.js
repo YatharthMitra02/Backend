@@ -18,7 +18,7 @@ import bcrypt from 'bcrypt'
             lowercase:true,
             trim:true,
         },
-        fullname:{
+        fullName:{
             type:String,
             require:true,
             unique:true,
@@ -61,11 +61,11 @@ import bcrypt from 'bcrypt'
 
     }
     userSchema.methods.generateAccessToken = function(){
-        JWT.sign(
+       return JWT.sign(
             {
                 _id:this._id,
                 username:this.username,
-                email: this.username,
+                email: this.email,
                 fullname:this.fullname
             },
             process.env.ACCESS_TOKEN,
@@ -76,7 +76,7 @@ import bcrypt from 'bcrypt'
         )
     }
     userSchema.methods.generateRefreshToken = function(){
-        JWT.sign({
+       return JWT.sign({
             _id:this._id,
            
 
