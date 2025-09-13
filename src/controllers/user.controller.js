@@ -180,10 +180,7 @@ const logoutUser = asynHandler(async(req,res)=>{
       {
         new : true
       }
-
-
-    
-  )
+)
   const option = {
     httpOnly:true,
     secure:true
@@ -206,7 +203,7 @@ const refreshAccessToken  = asynHandler(async(req,res)=>{
 
   }
   const decodedToken = jwt.verify(incomingRefreshToken , process.env.REFRESH_TOKEN_SECRET)
- const user = await user.findById(decodedToken?._id)
+ const user = await User.findById(decodedToken?._id)
   if(!user){
     throw new apiError(401 , "unauthorized Refresh Token")
   }

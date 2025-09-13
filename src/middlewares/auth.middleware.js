@@ -12,7 +12,7 @@ export const verifyJWT = asynHandler(async(req , _ , next)=>{
          throw new apiError(401 , "unauthorized request")
      }
      const decodedToken = jwt.verify(token , process.env.ACCESS_TOKEN)
-     const user = await User.findById(decodedToken?._id).select(" -refreshToken -password")
+     const user = await User.findById(decodedToken?._id).select("-refreshToken -password")
   // ek chota sa discussion hoga frontend ke liye 
      if(!user){
          throw new apiError(401 , "invalid acess token ")
