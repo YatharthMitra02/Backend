@@ -57,7 +57,7 @@ import bcrypt from 'bcrypt'
             next()
     })
     userSchema.methods.isPassword = async function(password){
-        return await bcrypt.compare(this.password, password)
+        return await bcrypt.compare( password , this.password)
 
     }
     userSchema.methods.generateAccessToken = function(){
